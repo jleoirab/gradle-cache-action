@@ -42,6 +42,11 @@ class GradleCacheAction(
     suspend fun execute(stage: ActionStage) {
         val gradleVersion = gradleDistribution.version
 
+        info("Params generatedGradleJars: $params.generatedGradleJars")
+        info("Params localBuildCache: $params.localBuildCache")
+        info("Params gradleDependenciesCache: $params.gradleDependenciesCache")
+        info("Params mavenDependenciesCache: $params.mavenDependenciesCache")
+
         val caches = mutableListOf<Cache>()
 
         if (params.generatedGradleJars) {
