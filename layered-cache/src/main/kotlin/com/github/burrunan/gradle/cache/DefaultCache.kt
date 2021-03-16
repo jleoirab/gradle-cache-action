@@ -133,6 +133,8 @@ class DefaultCache(
         val oldHash = info()
 
         val newHash = hashFilesDetailed(*paths.toTypedArray())
+        info("created hashFilesDetailed $paths")
+
         details = newHash
 
         if (newHash.contents.files.isEmpty()) {

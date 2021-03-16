@@ -77,6 +77,7 @@ suspend fun hashFilesDetailed(
     val files = mutableMapOf<String, FileDetails>()
     val overallHash = createHash(algorithm)
     for (name in fileNames) {
+        info("Checking file with filename $name")
         val statSync = stat(name)
         if (statSync.isDirectory()) {
             continue
