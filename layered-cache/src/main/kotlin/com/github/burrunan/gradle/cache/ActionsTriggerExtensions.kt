@@ -23,11 +23,7 @@ import octokit.ActionsTrigger
 val ActionsTrigger.cacheKey: String
     get() = when (this) {
         is ActionsTrigger.PullRequest -> "PR${event.pull_request.number}"
-        is ActionsTrigger.BranchPush -> when (val ref = event.ref.removePrefix("refs/heads/")) {
-            event.repository.default_branch.removePrefix("refs/heads/") ->
-                GradleCacheAction.DEFAULT_BRANCH_VAR
-            else -> ref
-        }
+        is ActionsTrigger.BranchPush -> GradleCacheAction.DEFAULT_BRANCH_VAR
         is ActionsTrigger.Schedule, is ActionsTrigger.WorkflowDispatch ->
             GradleCacheAction.DEFAULT_BRANCH_VAR
         is ActionsTrigger.Other -> "$name-${ActionsEnvironment.GITHUB_WORKFLOW}-${ActionsEnvironment.GITHUB_SHA}"
