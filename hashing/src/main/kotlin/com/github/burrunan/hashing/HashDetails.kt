@@ -17,6 +17,7 @@ package com.github.burrunan.hashing
 
 import actions.core.ActionFailedException
 import actions.core.warning
+import actions.core.info
 import actions.glob.Globber
 import actions.glob.glob
 import com.github.burrunan.wrappers.nodejs.pipe
